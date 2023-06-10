@@ -14,10 +14,13 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+    versionCatalogs {
+        create("libs") {
+            from(files("../gradle/libs.versions.toml"))
+        }
+    }
 }
 
-includeBuild("build-logic")
+rootProject.name = "build-logic"
 
-rootProject.name = "kmm-template"
-include(":android")
-include(":shared")
+include(":convention")
