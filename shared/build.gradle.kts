@@ -20,8 +20,8 @@ kotlin {
     iosSimulatorArm64()
 
     cocoapods {
-        summary = "Some description for the Shared Module"
-        homepage = "Link to the Shared Module homepage"
+        summary = "Shared Module"
+        homepage = "Shared Module homepage"
         version = "1.0"
         ios.deploymentTarget = "14.1"
         podfile = project.file("../ios/Podfile")
