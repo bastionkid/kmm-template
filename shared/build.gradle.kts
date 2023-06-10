@@ -11,7 +11,7 @@ kotlin {
     android {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = JavaVersion.VERSION_17.toString()
             }
         }
     }
@@ -31,12 +31,12 @@ kotlin {
     }
     
     sourceSets {
-        val commonMain by getting {
+        getByName("commonMain") {
             dependencies {
                 //put your multiplatform dependencies here
             }
         }
-        val commonTest by getting {
+        getByName("commonTest") {
             dependencies {
                 implementation(kotlin("test"))
             }
@@ -47,7 +47,13 @@ kotlin {
 android {
     namespace = "com.azuredragon.app"
     compileSdk = 33
+
     defaultConfig {
         minSdk = 26
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
