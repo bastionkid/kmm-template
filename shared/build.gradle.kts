@@ -4,7 +4,10 @@ plugins {
     alias(libs.plugins.android.library)
 }
 
-@OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
+@OptIn(
+    org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class,
+    org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl::class,
+)
 kotlin {
     targetHierarchy.default()
 
@@ -18,7 +21,7 @@ kotlin {
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-
+    wasm()
     cocoapods {
         summary = "Shared Module"
         homepage = "Shared Module homepage"
@@ -31,12 +34,12 @@ kotlin {
     }
     
     sourceSets {
-        getByName("commonMain") {
+        val commonMain by getting {
             dependencies {
                 //put your multiplatform dependencies here
             }
         }
-        getByName("commonTest") {
+        val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
             }
