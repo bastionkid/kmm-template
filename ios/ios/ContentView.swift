@@ -2,10 +2,14 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-	let greet = Greeting().greet()
-
 	var body: some View {
-		Text(greet)
+        VStack {
+            Text(Greeting().greet())
+
+            Text(StringRes().getString(id: SharedRes.strings().label_name, args: nil))
+            
+            Text(StringRes().getString(id: SharedRes.strings().label_name_with_args, args: ["Args"]))
+        }
 	}
 }
 
