@@ -1,7 +1,10 @@
+import dev.icerock.gradle.MRVisibility
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     kotlin("native.cocoapods")
     alias(libs.plugins.android.library)
+    alias(libs.plugins.moko.resources)
 }
 
 @OptIn(
@@ -21,7 +24,7 @@ kotlin {
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-    wasm()
+//    wasm()
     cocoapods {
         summary = "Shared Module"
         homepage = "Shared Module homepage"
@@ -30,18 +33,22 @@ kotlin {
         podfile = project.file("../ios/Podfile")
         framework {
             baseName = "shared"
+            export(libs.moko.resources)
+            export(libs.moko.graphics)
         }
     }
     
     sourceSets {
         val commonMain by getting {
             dependencies {
-                //put your multiplatform dependencies here
+                api(libs.moko.resources)
+                api(libs.moko.resources.compose)
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
+                implementation(libs.moko.resources.test)
             }
         }
     }
@@ -59,4 +66,12 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "com.azuredragon.app" // required
+    multiplatformResourcesClassName = "SharedRes" // optional, default MR
+    multiplatformResourcesVisibility = MRVisibility.Public // optional, default Public
+    iosBaseLocalizationRegion = "en" // optional, default "en"
+    multiplatformResourcesSourceSet = "commonMain"  // optional, default "commonMain"
 }

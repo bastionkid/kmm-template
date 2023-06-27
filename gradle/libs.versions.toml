@@ -72,6 +72,8 @@ riveAndroid = "5.1.1"
 barcodeScanning = "17.1.0"
 androidx-baselineprofile = "1.2.0-alpha13"
 licensee = "1.7.0"
+mokoResources = "0.23.0"
+mokoGraphics = "0.9.0"
 
 [libraries]
 accompanist-flowlayout = { group = "com.google.accompanist", name = "accompanist-flowlayout", version.ref = "accompanist" }
@@ -178,6 +180,12 @@ play-services-auth = { group = "com.google.android.gms", name = "play-services-a
 play-services-auth-api-phone = { group = "com.google.android.gms", name = "play-services-auth-api-phone", version.ref = "playServicesAuthApiPhone" }
 rive-android = { group = "app.rive", name = "rive-android", version.ref = "riveAndroid" }
 barcode = { group = "com.google.mlkit", name = "barcode-scanning", version.ref = "barcodeScanning" }
+moko-resources = { group = "dev.icerock.moko", name = "resources", version.ref = "mokoResources" }
+moko-resources-compose = { group = "dev.icerock.moko", name = "resources-compose", version.ref = "mokoResources" }
+moko-resources-test = { group = "dev.icerock.moko", name = "resources-test", version.ref = "mokoResources" }
+moko-graphics = { group = "dev.icerock.moko", name = "graphics", version.ref = "mokoGraphics" }
+
+# Plugin Dependencies
 ruler-gradle-plugin = { module = "com.spotify.ruler:ruler-gradle-plugin", version.ref = "rulerGradlePlugin" }
 
 # Dependencies of the included build-logic
@@ -202,4 +210,5 @@ google-services = { id = "com.google.gms.google-services", version.ref = "google
 firebase-performance = { id = "com.google.firebase.firebase-perf", version.ref = "firebasePerformancePlugin" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlyticsPlugin" }
 androidx-baselineprofile = { id = "androidx.baselineprofile", version.ref = "androidx-baselineprofile" }
-licensee-gradlePlugin = { id = "app.cash.licensee", version.ref = "licensee" }
+licensee = { id = "app.cash.licensee", version.ref = "licensee" }
+moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "mokoResources" }
