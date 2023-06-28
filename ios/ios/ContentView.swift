@@ -7,11 +7,19 @@ struct ContentView: View {
             Text(Greeting().greet())
 
             Text(StringRes().getString(id: SharedRes.strings().label_name, args: nil))
-            
+
             Text(StringRes().getString(id: SharedRes.strings().label_name_with_args, args: ["Args"]))
-            
+
             Text("Real Text")
                 .foregroundColor(SharedRes.colors().red.getUIColor().toColor())
+            
+            Text(StringRes().getPluralString(id: SharedRes.plurals().quantity, quantity: 0, args: nil))
+            Text(StringRes().getPluralString(id: SharedRes.plurals().quantity, quantity: 1, args: nil))
+            Text(StringRes().getPluralString(id: SharedRes.plurals().quantity, quantity: 2, args: nil))
+            
+            Text(StringRes().getPluralString(id: SharedRes.plurals().fruit_quantity, quantity: 0, args: [0, "Apple"]))
+            Text(StringRes().getPluralString(id: SharedRes.plurals().fruit_quantity, quantity: 1, args: [1, "Apple"]))
+            Text(StringRes().getPluralString(id: SharedRes.plurals().fruit_quantity, quantity: 2, args: [2, "Apple"]))
         }
 	}
 }

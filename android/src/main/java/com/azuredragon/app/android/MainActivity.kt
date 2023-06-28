@@ -1,6 +1,5 @@
 package com.azuredragon.app.android
 
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,20 +8,18 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.colorspace.ColorSpaces
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.graphics.toColor
 import com.azuredragon.app.Greeting
 import com.azuredragon.app.SharedRes
 import com.azuredragon.app.StringRes
-import dev.icerock.moko.resources.ColorResource
 import dev.icerock.moko.resources.compose.colorResource
 
 class MainActivity : ComponentActivity() {
@@ -30,49 +27,63 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Box {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = Modifier
-                                .align(Alignment.Center),
-                        ) {
-                            GreetingView(Greeting().greet())
-
-                            Spacer(modifier = Modifier.size(16.dp))
-
-                            GreetingView(StringRes(this@MainActivity).getString(SharedRes.strings.label_name))
-
-                            Spacer(modifier = Modifier.size(16.dp))
-
-                            GreetingView(StringRes(this@MainActivity).getString(SharedRes.strings.label_name_with_args, listOf("Args")))
-
-                            Spacer(modifier = Modifier.size(16.dp))
-
-                            Text(
-                                text = "Red Text",
-                                color = colorResource(SharedRes.colors.red),
-                            )
-                        }
-                    }
-                }
+                GreetingView()
             }
         }
     }
 }
 
 @Composable
-fun GreetingView(text: String) {
-    Text(text = text)
+fun GreetingView() {
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colors.background
+    ) {
+        Box {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .align(Alignment.Center),
+            ) {
+                val context = LocalContext.current
+
+                Text(Greeting().greet())
+
+                Spacer(modifier = Modifier.size(16.dp))
+
+                Text(StringRes(context).getString(SharedRes.strings.label_name))
+
+                Spacer(modifier = Modifier.size(16.dp))
+
+                Text(StringRes(context).getString(SharedRes.strings.label_name_with_args, listOf("Args")))
+
+                Spacer(modifier = Modifier.size(16.dp))
+
+                Text(
+                    text = "Red Text",
+                    color = colorResource(SharedRes.colors.red),
+                )
+
+                Spacer(modifier = Modifier.size(16.dp))
+
+                Text(StringRes(context).getPluralString(SharedRes.plurals.quantity, 0))
+                Text(StringRes(context).getPluralString(SharedRes.plurals.quantity, 1))
+                Text(StringRes(context).getPluralString(SharedRes.plurals.quantity, 2))
+
+                Spacer(modifier = Modifier.size(16.dp))
+
+                Text(StringRes(context).getPluralString(SharedRes.plurals.fruit_quantity, 0, listOf(0, "Apple")))
+                Text(StringRes(context).getPluralString(SharedRes.plurals.fruit_quantity, 1, listOf(1, "Apple")))
+                Text(StringRes(context).getPluralString(SharedRes.plurals.fruit_quantity, 2, listOf(2, "Apple")))
+            }
+        }
+    }
 }
 
 @Preview
 @Composable
 fun DefaultPreview() {
     MyApplicationTheme {
-        GreetingView("Hello, Android!")
+        GreetingView()
     }
 }

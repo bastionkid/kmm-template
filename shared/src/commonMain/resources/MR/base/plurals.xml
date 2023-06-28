@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <plural name="quantity">
+        <item quantity="one">one</item>
+        <item quantity="other">other</item>
+    </plural>
+
+    <plural name="fruit_quantity">
+        <item quantity="one">%d %s</item>
+        <item quantity="other">%d %ss</item>
+    </plural>
+</resources>
