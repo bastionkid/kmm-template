@@ -6,7 +6,7 @@ import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.format
 
 actual class StringRes(
-    val context: Context,
+    private val context: Context,
 ) {
     actual fun getString(
         id: StringResource,
