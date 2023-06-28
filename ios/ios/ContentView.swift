@@ -6,9 +6,11 @@ struct ContentView: View {
         VStack {
             Text(Greeting().greet())
 
-            Text(StringRes().getString(id: SharedRes.strings().label_name, args: nil))
+            Group {
+                Text(StringRes().getString(id: SharedRes.strings().label_name, args: nil))
 
-            Text(StringRes().getString(id: SharedRes.strings().label_name_with_args, args: ["Args"]))
+                Text(StringRes().getString(id: SharedRes.strings().label_name_with_args, args: ["Args"]))
+            }
 
             Text("Real Text")
                 .foregroundColor(SharedRes.colors().red.getUIColor().toColor())
