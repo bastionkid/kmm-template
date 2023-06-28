@@ -16,3 +16,4 @@ secrets.properties
 *.xcbkptlist
 !/.idea/codeStyles/*
 !/.idea/inspectionProfiles/*
+/ios/ios.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
