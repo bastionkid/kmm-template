@@ -3,6 +3,7 @@ package com.azuredragon.app.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -21,6 +22,7 @@ import com.azuredragon.app.Greeting
 import com.azuredragon.app.SharedRes
 import com.azuredragon.app.StringRes
 import dev.icerock.moko.resources.compose.colorResource
+import dev.icerock.moko.resources.compose.painterResource
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,6 +77,13 @@ fun GreetingView() {
                 Text(StringRes(context).getPluralString(SharedRes.plurals.fruit_quantity, 0, listOf(0, "Apple")))
                 Text(StringRes(context).getPluralString(SharedRes.plurals.fruit_quantity, 1, listOf(1, "Apple")))
                 Text(StringRes(context).getPluralString(SharedRes.plurals.fruit_quantity, 2, listOf(2, "Apple")))
+
+                Spacer(modifier = Modifier.size(16.dp))
+
+                Image(
+                    painter = painterResource(imageResource = SharedRes.images.taj_mahal),
+                    contentDescription = null,
+                )
             }
         }
     }
