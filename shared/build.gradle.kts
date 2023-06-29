@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.BitcodeEmbeddingMode
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
-    kotlin("native.cocoapods")
+    alias(libs.plugins.cocoapods)
     alias(libs.plugins.android.library)
     alias(libs.plugins.moko.resources)
 }
