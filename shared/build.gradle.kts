@@ -65,6 +65,12 @@ kotlin {
                 implementation(libs.moko.resources.test)
             }
         }
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.androidx.compose.ui.tooling)
+                implementation(libs.androidx.compose.ui.tooling.preview)
+            }
+        }
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
@@ -94,6 +100,14 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
     }
 }
 
