@@ -97,9 +97,11 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "${PODS_ROOT}/../../shared/src/commonMain/resources/compose_logo.xml"
   install_resource "${PODS_ROOT}/../../shared/src/commonMain/resources/MR"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "${PODS_ROOT}/../../shared/src/commonMain/resources/compose_logo.xml"
   install_resource "${PODS_ROOT}/../../shared/src/commonMain/resources/MR"
 fi
 
