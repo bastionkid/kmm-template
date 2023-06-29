@@ -1,4 +1,5 @@
 import dev.icerock.gradle.MRVisibility
+import org.jetbrains.kotlin.gradle.plugin.mpp.BitcodeEmbeddingMode
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -33,9 +34,12 @@ kotlin {
         podfile = project.file("../ios/Podfile")
         framework {
             baseName = "shared"
+            isStatic = true // This is enabled to make moko-resources work on iOS
+            transitiveExport = false // This is default
+            embedBitcode(BitcodeEmbeddingMode.BITCODE)
+
             export(libs.moko.resources)
             export(libs.moko.graphics)
-            isStatic = true
         }
     }
     
