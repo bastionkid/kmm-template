@@ -19,15 +19,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import dev.icerock.moko.resources.compose.painterResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.painterResource
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun App() {
     MaterialTheme {
         Surface {
-            var show by remember { mutableStateOf(false) }
+            var show by remember { mutableStateOf(true) }
 
             Column(
                 verticalArrangement = Arrangement.Center,
@@ -51,7 +51,7 @@ fun App() {
 
                 AnimatedVisibility(show) {
                     Image(
-                        painter = painterResource("compose_logo.xml"),
+                        painter = painterResource(SharedRes.images.taj_mahal),
                         contentDescription = null,
                     )
                 }
