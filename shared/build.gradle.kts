@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.cocoapods)
     alias(libs.plugins.android.library)
     alias(libs.plugins.moko.resources)
+    alias(libs.plugins.compose.multiplatform)
 }
 
 @OptIn(
@@ -40,6 +41,8 @@ kotlin {
 
             export(libs.moko.resources)
             export(libs.moko.graphics)
+
+            extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
         }
     }
     
@@ -48,6 +51,12 @@ kotlin {
             dependencies {
                 api(libs.moko.resources)
                 api(libs.moko.resources.compose)
+
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material)
+                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                implementation(compose.components.resources)
             }
         }
         val commonTest by getting {
@@ -55,6 +64,15 @@ kotlin {
                 implementation(kotlin("test"))
                 implementation(libs.moko.resources.test)
             }
+        }
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by getting {
+            dependsOn(commonMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
         }
     }
 }
@@ -65,6 +83,12 @@ android {
 
     defaultConfig {
         minSdk = 26
+    }
+
+    sourceSets["main"].apply {
+        manifest.srcFile("src/androidMain/AndroidManifest.xml")
+        res.srcDirs("src/androidMain/res")
+        resources.srcDirs("src/commonMain/resources")
     }
 
     compileOptions {
