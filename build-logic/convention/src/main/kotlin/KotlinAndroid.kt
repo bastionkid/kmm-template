@@ -6,6 +6,7 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
+import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 
 /**
  * Configure base Kotlin with Android options
@@ -27,6 +28,18 @@ internal fun Project.configureKotlinAndroid(
 			sourceCompatibility = JavaVersion.VERSION_17
 			targetCompatibility = JavaVersion.VERSION_17
 			isCoreLibraryDesugaringEnabled = true
+		}
+
+		configure<KotlinProjectExtension> {
+			sourceSets.all {
+				languageSettings {
+					optIn("kotlin.RequiresOptIn")
+					optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
+					optIn("kotlinx.coroutines.FlowPreview")
+					optIn("kotlin.Experimental")
+					optIn("kotlinx.serialization.ExperimentalSerializationApi")
+				}
+			}
 		}
 
 		if (applyKotlinOptions) {
