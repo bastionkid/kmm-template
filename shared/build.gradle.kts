@@ -38,6 +38,8 @@ kotlin {
                 implementation(compose.material)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+
+                implementation(projects.shared.core.common)
             }
         }
         val commonTest by getting {

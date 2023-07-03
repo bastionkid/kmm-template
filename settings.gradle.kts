@@ -23,3 +23,5 @@ includeBuild("build-logic")
 rootProject.name = "kmm-template"
 include(":android")
 include(":shared")
+include(":shared:core")
+include(":shared:core:common")
