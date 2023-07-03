@@ -75,6 +75,7 @@ androidx-baselineprofile = "1.2.0-alpha13"
 licensee = "1.7.0"
 mokoResources = "0.23.0"
 mokoGraphics = "0.9.0"
+nativeCoroutines = "1.0.0-ALPHA-11"
 
 [libraries]
 accompanist-flowlayout = { group = "com.google.accompanist", name = "accompanist-flowlayout", version.ref = "accompanist" }
@@ -187,7 +188,7 @@ moko-resources-test = { group = "dev.icerock.moko", name = "resources-test", ver
 moko-graphics = { group = "dev.icerock.moko", name = "graphics", version.ref = "mokoGraphics" }
 
 # Plugin Dependencies
-ruler-gradle-plugin = { module = "com.spotify.ruler:ruler-gradle-plugin", version.ref = "rulerGradlePlugin" }
+ruler-gradle-plugin = { group = "com.spotify.ruler", name = "ruler-gradle-plugin", version.ref = "rulerGradlePlugin" }
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
@@ -216,3 +217,4 @@ androidx-baselineprofile = { id = "androidx.baselineprofile", version.ref = "and
 licensee = { id = "app.cash.licensee", version.ref = "licensee" }
 moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "mokoResources" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+kmp-native-coroutines = { id = "com.rickclephas.kmp.nativecoroutines", version.ref = "nativeCoroutines" }

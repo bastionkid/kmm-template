@@ -1,5 +1,7 @@
 plugins {
     id("kotlin.multiplatform")
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kmp.native.coroutines)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)

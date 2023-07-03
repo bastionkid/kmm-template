@@ -38,6 +38,7 @@ internal fun Project.configureKotlinAndroid(
 					optIn("kotlinx.coroutines.FlowPreview")
 					optIn("kotlin.Experimental")
 					optIn("kotlinx.serialization.ExperimentalSerializationApi")
+					optIn("kotlin.experimental.ExperimentalObjCName")
 				}
 			}
 		}
