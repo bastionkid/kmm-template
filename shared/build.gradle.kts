@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.BitcodeEmbeddingMode
 
 plugins {
     id("kotlin.multiplatform")
+    alias(libs.plugins.cocoapods)
     id("moko.resources")
     id("compose.multiplatform")
 }

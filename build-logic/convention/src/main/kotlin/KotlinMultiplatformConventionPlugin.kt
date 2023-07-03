@@ -13,7 +13,6 @@ class KotlinMultiplatformConventionPlugin: Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("org.jetbrains.kotlin.multiplatform")
-                apply("org.jetbrains.kotlin.native.cocoapods")
                 apply("com.android.library")
             }
 
