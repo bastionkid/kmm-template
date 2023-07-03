@@ -1,32 +1,12 @@
-import dev.icerock.gradle.MRVisibility
 import org.jetbrains.kotlin.gradle.plugin.mpp.BitcodeEmbeddingMode
 
 plugins {
-    alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.cocoapods)
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.moko.resources)
-    alias(libs.plugins.compose.multiplatform)
+    id("kotlin.multiplatform")
+    id("moko.resources")
+    id("compose.multiplatform")
 }
 
-@OptIn(
-    org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class,
-    org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl::class,
-)
 kotlin {
-    targetHierarchy.default()
-
-    android {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = JavaVersion.VERSION_17.toString()
-            }
-        }
-    }
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-//    wasm()
     cocoapods {
         summary = "Shared Module"
         homepage = "Shared Module homepage"
@@ -85,36 +65,8 @@ kotlin {
 
 android {
     namespace = "com.azuredragon.app"
-    compileSdk = 33
-
-    defaultConfig {
-        minSdk = 26
-    }
-
-    sourceSets["main"].apply {
-        manifest.srcFile("src/androidMain/AndroidManifest.xml")
-        res.srcDirs("src/androidMain/res")
-        resources.srcDirs("src/commonMain/resources")
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-    }
 }
 
 multiplatformResources {
     multiplatformResourcesPackage = "com.azuredragon.app" // required
-    multiplatformResourcesClassName = "SharedRes" // optional, default MR
-    multiplatformResourcesVisibility = MRVisibility.Public // optional, default Public
-    iosBaseLocalizationRegion = "en" // optional, default "en"
-    multiplatformResourcesSourceSet = "commonMain"  // optional, default "commonMain"
 }

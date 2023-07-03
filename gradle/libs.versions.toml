@@ -193,6 +193,7 @@ ruler-gradle-plugin = { module = "com.spotify.ruler:ruler-gradle-plugin", versio
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 spotless-gradlePlugin = { group = "com.diffplug.spotless", name = "spotless-plugin-gradle", version.ref = "spotless" }
+moko-resources-gradlePlugin = { group = "dev.icerock.moko", name = "resources-generator", version.ref = "mokoResources" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
