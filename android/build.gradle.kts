@@ -44,6 +44,7 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        isCoreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
@@ -57,4 +58,5 @@ dependencies {
     implementation(libs.androidx.compose.material)
     implementation(libs.androidx.compose.ui.tooling)
     implementation(libs.androidx.activity.compose)
+    coreLibraryDesugaring(libs.android.desugarJdkLibs)
 }
