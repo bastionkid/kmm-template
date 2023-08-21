@@ -54,9 +54,15 @@ kotlin {
                 implementation(libs.androidx.compose.ui.tooling.preview)
             }
         }
-        val iosX64Main by getting
-        val iosArm64Main by getting
-        val iosSimulatorArm64Main by getting
+        val iosX64Main by getting {
+            resources.srcDirs("build/generated/moko/iosX64Main/src")
+        }
+        val iosArm64Main by getting {
+            resources.srcDirs("build/generated/moko/iosArm64Main/src")
+        }
+        val iosSimulatorArm64Main by getting {
+            resources.srcDirs("build/generated/moko/iosSimulatorArm64Main/src")
+        }
         val iosMain by getting {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
@@ -68,6 +74,10 @@ kotlin {
 
 android {
     namespace = "com.azuredragon.app"
+
+    sourceSets {
+        getByName("main").java.srcDirs("build/generated/moko/androidMain/src")
+    }
 }
 
 multiplatformResources {
